@@ -28,8 +28,8 @@ class CuentaTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		cuenta = new Cuenta(0d); // ahora lo hace antes de cada prueba
-		cuenta1 = new Cuenta("Juan","12345",50);
-		cuenta2 = new Cuenta("Pedro","67890",0);
+		cuenta1 = new Cuenta("Juan","12345",50d);
+		cuenta2 = new Cuenta("Pedro","67890",0d);
 	}
 
 	@AfterEach
@@ -50,15 +50,24 @@ class CuentaTest {
 
 	@Test
 	void test0014() {
-		cuenta1.retirar(200d);
-		cuenta1.ingresar(100d);
-		cuenta1.retirar(200d);
-		assertEquals(cuenta1, cuenta1.getSaldo());
 		
-		cuenta2.retirar(350d);
+		// (!!) No se puede hacer mas de un 'assert' (assertEquals, assertTrue, fails) en un mismo test
+		//assertEquals(-250d, cuenta1.getSaldo());
+		//assertEquals(-450d, cuenta2.getSaldo());
+
+		cuenta1.retirar(200d); // 1
+		cuenta2.retirar(350d); // 2
+		cuenta1.ingresar(100d); 
+		cuenta2.retirar(200d);
 		cuenta2.retirar(150d);
+		cuenta1.retirar(200d);
 		cuenta2.ingresar(50d);
-		assertEquals(cuenta2, cuenta2.getSaldo());
+		cuenta2.retirar(100d);
+
+		boolean cuenta1_bool = (-250d == cuenta1.getSaldo());
+		boolean cuenta2_bool = (-450d == cuenta2.getSaldo());
+	
+		assertEquals(true,cuenta1_bool && cuenta2_bool);		
 	}
 	
 }
