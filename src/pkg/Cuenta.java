@@ -44,11 +44,11 @@ public class Cuenta {
 	public void retirar(Double ingreso) {
 		this.movimientosList.add(new Movimientos());
 		
-		if(this.saldo-ingreso > -500d) {
+		if(this.saldo-ingreso >= -500d) {
 			this.saldo-= ingreso;
 		}
 		else {
-			System.out.println("Dondos insuficientes (saldo -"+this.saldo+") en  la cuenta"+ this.numero+" para el reintegro de "+ingreso+ "€ ("+(movimientosList.size()+")"));
+			System.out.println("Dondos insuficientes (saldo "+this.saldo+") en  la cuenta"+ this.numero+" para el reintegro de "+ingreso+ "€ ("+(movimientosList.size()+")"));
 		}
 		
 	
