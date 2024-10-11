@@ -2,22 +2,25 @@ package pkg;
 
 public class Cuenta {
 
+	private Double saldo;
+	
+	
+	public Cuenta(Double saldo) {
+		this.saldo = saldo;
+	}
+	
+	
 	public Double getSaldo() {
-		return 1d; // para que funcione el test
+		return this.saldo;
 	}
 
 	public void setSaldo(Double saldo) {
 		this.saldo = saldo;
 	}
 
-	private Double saldo;
-	
-	public Cuenta(Double saldo) {
-		this.saldo = saldo;
-	}
-	
+
 	public void ingresar(Double ingreso) {
-		
+		this.saldo += ingreso;
 	}
 	
 	
