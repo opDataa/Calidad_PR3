@@ -17,7 +17,7 @@ class CuentaTest {
 	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
-		cuenta = new Cuenta(0d);
+		//cuenta = new Cuenta(0d); // ya no lo hace al principio de iniciar los tests
 	}
 
 	@AfterAll
@@ -26,6 +26,7 @@ class CuentaTest {
 
 	@BeforeEach
 	void setUp() throws Exception {
+		cuenta = new Cuenta(0d); // ahora lo hace antes de cada prueba
 	}
 
 	@AfterEach
