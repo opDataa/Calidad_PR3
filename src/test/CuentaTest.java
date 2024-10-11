@@ -55,14 +55,14 @@ class CuentaTest {
 		//assertEquals(-250d, cuenta1.getSaldo());
 		//assertEquals(-450d, cuenta2.getSaldo());
 
-		cuenta1.retirar(200d); // 1
-		cuenta2.retirar(350d); // 2
-		cuenta1.ingresar(100d); 
-		cuenta2.retirar(200d);
-		cuenta2.retirar(150d);
-		cuenta1.retirar(200d);
-		cuenta2.ingresar(50d);
-		cuenta2.retirar(100d);
+		cuenta1.retirar(200d); // 1 => 1 -150
+		cuenta2.retirar(350d); // 2 => 2 -350
+		cuenta1.ingresar(100d);  // 3 => 1 -50
+		cuenta2.retirar(200d);   // 4 ** => 2 -350
+		cuenta2.retirar(150d);   // 5 => 2 -500 
+		cuenta1.retirar(200d);   // 6
+		cuenta2.ingresar(50d);   // 7 => 2 -450
+		cuenta2.retirar(100d);   // 8 **  => 2 -450
 
 		boolean cuenta1_bool = (-250d == cuenta1.getSaldo());
 		boolean cuenta2_bool = (-450d == cuenta2.getSaldo());
