@@ -24,7 +24,7 @@ public class Cuenta {
 	}
 	
 	public void retirar(Double ingreso) {
-		this.saldo = -1d;
+		this.saldo-= ingreso;
 	}
 	
 	
