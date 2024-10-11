@@ -1,5 +1,6 @@
 package pkg;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Cuenta {
@@ -10,7 +11,7 @@ public class Cuenta {
 	private Double saldo;
 	
 	
-	private List<Movimientos> movimientosList;
+	private List<Movimientos> movimientosList = new ArrayList<Movimientos>(); // Cada operacion registra un 'Movimiento' se realice o no al final
 	
 	
 	public Cuenta(Double saldo) {
@@ -35,15 +36,19 @@ public class Cuenta {
 
 
 	public void ingresar(Double ingreso) {
+		this.movimientosList.add(new Movimientos());
+		
 		this.saldo += ingreso;
 	}
 	
 	public void retirar(Double ingreso) {
-		if((this.saldo==-350d && ingreso == 200d) || (this.saldo == -450d && ingreso == 100d)) {
-			
+		this.movimientosList.add(new Movimientos());
+		
+		if(this.saldo-ingreso > -500d) {
+			this.saldo-= ingreso;
 		}
 		else {
-			this.saldo-= ingreso;
+			System.out.println("Dondos insuficientes (saldo -"+this.saldo+") en  la cuenta"+ this.numero+" para el reintegro de "+ingreso+ "€ ("+(movimientosList.size()+")"));
 		}
 		
 	
